@@ -1,10 +1,10 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { md5 } = require('../../scripts/md5');
+const { sha1 } = require('../../scripts/sha1');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('md5')
-		.setDescription('Returns the MD5 checksum of the input.')
+		.setName('sha1')
+		.setDescription('Returns the SHA-1 checksum of the input.')
         .addStringOption(option => 
             option.setName('input')
                 .setDescription('The input to hash')
@@ -12,6 +12,6 @@ module.exports = {
             ),
 	async execute(interaction) {
         const input = interaction.options.getString('input');
-		await interaction.reply(`\`\`\`INPUT    : ${input}\nCHECKSUM : ${md5.hash.hex(input)}\`\`\``);
+		await interaction.reply(`\`\`\`INPUT    : ${input}\nCHECKSUM : ${sha1.hash.hex(input)}\`\`\``);
 	},
 };
